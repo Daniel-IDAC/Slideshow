@@ -19,6 +19,8 @@ function loadSlideshow(){
 
     // Get all secctions added to the slideshow as childrens moved to sectionsWrap
     const sections = sectionsWrap.children;
+    sections[0].classList.add("active");
+
 
     const dotBlock = document.createElement("div");
     dotBlock.setAttribute("id", "slideshow_dots_block");
