@@ -1,0 +1,24 @@
+html, body{
+    margin: 0; padding: 0;
+}
+
+#slideshow{
+
+}
+#slideshow_dots_block{
+
+}
+.slideshow_dot_section{
+    display: inline-block;
+    width: .5em; height: .5em;
+
+    margin: .15em;
+
+    cursor: pointer;
+
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.slideshow_dot_section:hover{
+    background-color: black;
+}
