@@ -3,10 +3,10 @@ html, body{
 }
 
 #slideshow{
-
+    display: block;
 }
 #slideshow_dots_block{
-
+    display: block;
 }
 .slideshow_dot_section{
     display: inline-block;
