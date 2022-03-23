@@ -27,10 +27,19 @@ html, body{
 
     padding: 2em;
 
-    transition: left 2s;
+    transform: scale(0.4);
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    opacity: 0;
+    border: .11em transparent black; border-radius: 5%;
+
+    transition: left 1.5s, transform 2s, opacity 2s, border-radius 2s, margin-left 1s;
 }
 .slideshow_section.active{
-    
+    transform: scale(1);
+    z-index: 1;
+    opacity: 1;
+    border-radius: 0%;
 }
 .slideshow_section.stackL{
     left: -100%;
@@ -41,9 +50,19 @@ html, body{
 
 /* --# Dots style #-- */
 #slideshow_dots_block{
+    /*
     display: block;
     width: fit-content;
     margin: 0 auto;
+    */
+    position: absolute;
+    z-index: 1;
+
+    bottom: 0;
+
+    width: 100%;
+
+    text-align: center;
 }
 .slideshow_dot_section{
     display: inline-block;
@@ -53,7 +72,7 @@ html, body{
 
     cursor: pointer;
 
-    border: 1px solid black; border-radius: 50%;
+    border: .11em solid black; border-radius: 50%;
 }
 .slideshow_dot_section:hover, .slideshow_dot_section.active{
     background-color: black;
@@ -62,6 +81,7 @@ html, body{
 /* --# Move icons style #-- */
 .slideshow_move_block{
     position: absolute;
+    z-index: 1;
 
     top: 0;
 
@@ -85,14 +105,17 @@ html, body{
 
 .slideshow_move_icon {
     border: solid black;
-    border-width: 0 3px 3px 0;
+    border-width: 0 .2em .2em 0;
     
-    padding: 3px;
-    width: 1px; height: 1px;
+    padding: .2em;
+    width: .1em; height: .1em;
 }
 .slideshow_move_block.disabled .slideshow_move_icon{
     border: solid silver;
-    border-width: 0 3px 3px 0;
+    border-width: 0 .2em .2em 0;
+}
+.slideshow_move_block:hover .slideshow_move_icon{
+    width: .2em; height: .2em;
 }
 
 #slideshow_moveLeft_icon {

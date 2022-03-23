@@ -1,3 +1,47 @@
+var moving = false;
+var originX = 0;
+var endX = 0;
+
+function startMove(event){
+    moving = true;
+    if(event.type == "touchstart"){
+        originX = event.touches[0].clientX;
+    }
+    else if(event.type == "mousedown"){
+        originX = event.clientX;
+    }
+    
+}
+function inMove(event){
+    if(moving){
+        if(event.type == "touchmove"){
+            endX = event.touches[0].clientX;
+        }
+        else if(event.type == "mousemove"){
+            endX = event.clientX;
+        }
+
+        // Get all active sections and dots
+        var activeSections = document.getElementsByClassName("slideshow_section active");
+        var dif = originX - endX;
+        if( dif > 50 ){ activeSections[0].style.marginLeft = "-2em"; }
+        else if( dif < -50 ){ activeSections[0].style.marginLeft = "2em"; }
+        else{ activeSections[0].style.marginLeft = "0"; }
+    }
+}
+function endMove(){
+    if(endX != 0){
+        var activeSections = document.getElementsByClassName("slideshow_section active");
+        var dif = originX - endX;
+        if( dif > 50 ){ activeSections[0].style.marginLeft = "0"; moveSection(1); }
+        if( dif < -50 ){ activeSections[0].style.marginLeft = "0"; moveSection(-1); }
+    }
+    
+    moving = false;
+    originX = 0;
+    endX = 0;
+}
+
 function loadSlideshow(){
     // Get Slideshow element assigned as id="slideshow"
     const slideshow = document.getElementById("slideshow");
@@ -11,6 +55,16 @@ function loadSlideshow(){
     // Create sections wrap
     const sectionsWrap = document.createElement("div");
     sectionsWrap.setAttribute("id", "slideshow_sections_block");
+    // Add touch event listeners
+    sectionsWrap.addEventListener("touchstart", startMove);
+    sectionsWrap.addEventListener("mousedown", startMove);
+
+    sectionsWrap.addEventListener("touchmove", inMove);
+    sectionsWrap.addEventListener("mousemove", inMove);
+
+    sectionsWrap.addEventListener("touchend", endMove);
+    sectionsWrap.addEventListener("mouseup", endMove);
+
     // Move all slideshow child elements to sections wrap
     while(slideshow.children.length > 0){
         sectionsWrap.appendChild(slideshow.firstChild);
@@ -73,56 +127,27 @@ function goToSection(sectionId){
     // Get all sections and dots
     var sections = document.getElementsByClassName("slideshow_section");
     var sectionDots = document.getElementsByClassName("slideshow_dot_section");
+    
+    // Hidden all sections
+    for (let index = 0; index < sections.length; index++) {
+        sectionDots[index].classList.remove("active");
+        sections[index].classList.remove("active");
+        sections[index].classList.remove("stackL");
+        sections[index].classList.remove("stackR");
+        if( sectionId > index ){ sections[index].classList.add("stackL"); }
+        if( sectionId < index ){ sections[index].classList.add("stackR"); }
+    }
 
     // Get selected section to show by sectionId and dot
     const section = document.getElementById("slideshow_section_"+sectionId);
     const sectionDot = document.getElementById("slideshow_dot_section_"+sectionId);
 
-    // Hidden all sections
-    for (let index = 0; index < sections.length; index++) {
-        sections[index].classList.remove("active");
-        sectionDots[index].classList.remove("active");
-    }
-
-    // Show selected section
-    section.classList.add("active");
-    sectionDot.classList.add("active");
-}
-
-function moveSectionOld(direction){
-    // Get all active sections and dots
-    var activeSections = document.getElementsByClassName("slideshow_section active");
-    // Get current active section index
-    const activeSectionId = activeSections[0].id.split("_");
-    const activeSectionIndex = activeSectionId[2];
-    
-    // Get all sections and dots
-    var sections = document.getElementsByClassName("slideshow_section");
-    var sectionDots = document.getElementsByClassName("slideshow_dot_section");
-
-    // Hidden all sections
-    for (let index = 0; index < sections.length; index++) {
-        sections[index].classList.remove("active");
-        sectionDots[index].classList.remove("active");
-    }
-
-    var newSectionIndex = parseInt(activeSectionIndex) + parseInt(direction);
-    // Get selected section to show by sectionId and dot
-    const section = document.getElementById("slideshow_section_"+newSectionIndex);
-    const sectionDot = document.getElementById("slideshow_dot_section_"+newSectionIndex);
-    
     // Show selected section
     section.classList.add("active");
     sectionDot.classList.add("active");
 
     // Enabled/Disabled move buttons
-    const moveLeft = document.getElementById("slideshow_moveLeft_block");
-    const moveRight = document.getElementById("slideshow_moveRight_block");
-    moveLeft.classList.remove("disabled");
-    moveRight.classList.remove("disabled");
-    console.log(sections.length);
-    if( newSectionIndex == 0 ){ moveLeft.classList.add("disabled"); }
-    if( newSectionIndex == sections.length-1 ){ moveRight.classList.add("disabled"); }
+    enabledMoveButton(sectionId);
 }
 
 function moveSection(direction){
@@ -132,11 +157,17 @@ function moveSection(direction){
     const activeSectionId = activeSections[0].id.split("_");
     const activeSectionIndex = activeSectionId[2];
     const activeSection = activeSections[0];
-    
+
     // Get all sections and dots
     var sections = document.getElementsByClassName("slideshow_section");
     var sectionDots = document.getElementsByClassName("slideshow_dot_section");
 
+    // Check if newSectionIndex is out of bones
+    var newSectionIndex = parseInt(activeSectionIndex) + parseInt(direction);
+    if(newSectionIndex < 0 || newSectionIndex == sections.length){
+        return;
+    }
+    
     // Hidden all sections
     for (let index = 0; index < sections.length; index++) {
         sections[index].classList.remove("active");
@@ -145,34 +176,38 @@ function moveSection(direction){
     
     // Get new section
     activeSection.classList.remove("active");
-    var newSectionIndex = parseInt(activeSectionIndex) + parseInt(direction);
-
+    
     // Get selected section to show by sectionId and dot
     const section = document.getElementById("slideshow_section_"+newSectionIndex);
     const sectionDot = document.getElementById("slideshow_dot_section_"+newSectionIndex);
     sectionDot.classList.add("active");
 
     // Check movement direction
-    console.log("Direcion "+direction);
     if( direction === 1 ){ // Right icon
-        console.log("Boton derecho");
         activeSection.classList.add("stackL");
         section.classList.remove("stackR");
         section.classList.add("active");
     }
     else{ // Left icon
-        console.log("Boton izquierdo");
         activeSection.classList.add("stackR");
         section.classList.remove("stackL");
         section.classList.add("active");
     }
 
     // Enabled/Disabled move buttons
+    enabledMoveButton(newSectionIndex);
+}
+
+function enabledMoveButton( index ){
+    // Get all sections and dots
+    var sections = document.getElementsByClassName("slideshow_section");
+    
+    // Enabled/Disabled move buttons
     const moveLeft = document.getElementById("slideshow_moveLeft_block");
     const moveRight = document.getElementById("slideshow_moveRight_block");
     moveLeft.classList.remove("disabled");
     moveRight.classList.remove("disabled");
-    
-    if( newSectionIndex == 0 ){ moveLeft.classList.add("disabled"); }
-    if( newSectionIndex == sections.length-1 ){ moveRight.classList.add("disabled"); }
+
+    if( index == 0 ){ moveLeft.classList.add("disabled"); }
+    if( index == sections.length - 1 ){ moveRight.classList.add("disabled"); }
 }
