@@ -42,7 +42,35 @@ function endMove(){
     endX = 0;
 }
 
-function loadSlideshow(){
+
+var animationSlideshowInterval = setInterval(animationSlideshow, 5000);
+function animationSlideshow(){
+    var sections = document.getElementsByClassName("slideshow_section");
+    var currentIndex = 0;
+
+    for (let index = 0; index < sections.length; index++) {
+        if(sections[index].classList.contains("active")){
+            currentIndex = index;
+        }
+    }
+    if( currentIndex == (sections.length - 1) ){
+        currentIndex = 0;
+    }
+    else{
+        currentIndex++;
+    }
+    goToSection(currentIndex);
+}
+function playAnimationSlideshow(){
+    animationSlideshowInterval = setInterval(animationSlideshow, 5000);
+}
+
+function stopAnimationSlideshow(){
+    clearInterval(animationSlideshowInterval);
+}
+
+
+function loadSlideshow(autoPlay){
     // Get Slideshow element assigned as id="slideshow"
     const slideshow = document.getElementById("slideshow");
 
@@ -55,7 +83,7 @@ function loadSlideshow(){
     // Create sections wrap
     const sectionsWrap = document.createElement("div");
     sectionsWrap.setAttribute("id", "slideshow_sections_block");
-    // Add touch event listeners
+    // Add touch/click event listeners
     sectionsWrap.addEventListener("touchstart", startMove);
     sectionsWrap.addEventListener("mousedown", startMove);
 
@@ -64,6 +92,15 @@ function loadSlideshow(){
 
     sectionsWrap.addEventListener("touchend", endMove);
     sectionsWrap.addEventListener("mouseup", endMove);
+
+    // Add hover event listeners
+    if(autoPlay){
+        sectionsWrap.addEventListener("mouseenter", stopAnimationSlideshow);
+        sectionsWrap.addEventListener("mouseleave", playAnimationSlideshow);
+    }
+    else{
+        stopAnimationSlideshow();
+    }
 
     // Move all slideshow child elements to sections wrap
     while(slideshow.children.length > 0){
@@ -80,7 +117,7 @@ function loadSlideshow(){
     dotBlock.setAttribute("id", "slideshow_dots_block");
     slideshow.appendChild(dotBlock);
     for (let index = 0; index < sections.length; index++) {
-        sections[index].setAttribute("id", "slideshow_section_"+index);
+        //sections[index].setAttribute("id", "slideshow_section_"+index);
         sections[index].classList.add("slideshow_section");
         if(index > 0){
             sections[index].classList.add("stackR");
@@ -139,8 +176,12 @@ function goToSection(sectionId){
     }
 
     // Get selected section to show by sectionId and dot
+    /*
     const section = document.getElementById("slideshow_section_"+sectionId);
     const sectionDot = document.getElementById("slideshow_dot_section_"+sectionId);
+    */
+    const section = sections[sectionId];
+    const sectionDot = sectionDots[sectionId];
 
     // Show selected section
     section.classList.add("active");
@@ -152,15 +193,25 @@ function goToSection(sectionId){
 
 function moveSection(direction){
     // Get all active sections and dots
-    var activeSections = document.getElementsByClassName("slideshow_section active");
-    // Get current active section index
+    // var activeSections = document.getElementsByClassName("slideshow_section active");
+   
+    /*
     const activeSectionId = activeSections[0].id.split("_");
     const activeSectionIndex = activeSectionId[2];
     const activeSection = activeSections[0];
+    */
 
     // Get all sections and dots
     var sections = document.getElementsByClassName("slideshow_section");
     var sectionDots = document.getElementsByClassName("slideshow_dot_section");
+
+    // Get current active section index
+    for (let index = 0; index < sections.length; index++) {
+        if(sections[index].classList.contains("active")){
+            var activeSectionIndex = index;
+            var activeSection = sections[index];
+        }
+    }
 
     // Check if newSectionIndex is out of bones
     var newSectionIndex = parseInt(activeSectionIndex) + parseInt(direction);
@@ -178,8 +229,12 @@ function moveSection(direction){
     activeSection.classList.remove("active");
     
     // Get selected section to show by sectionId and dot
+    /*
     const section = document.getElementById("slideshow_section_"+newSectionIndex);
     const sectionDot = document.getElementById("slideshow_dot_section_"+newSectionIndex);
+    */
+    const section = sections[newSectionIndex];
+    const sectionDot = sectionDots[newSectionIndex];
     sectionDot.classList.add("active");
 
     // Check movement direction

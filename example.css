@@ -1,0 +1,67 @@
+.gameSection{
+    color: white;
+    font-family: sans-serif;
+}
+
+.gameSection.halflife2{
+    background: url(_example/halflife2BG.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.gameSection.tombraider{
+    background: url(_example/tombraiderBG.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.gameSection.spiderman{
+    background: url(_example/spidermanBG.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.gameSection.tlou{
+    background: url(_example/tlouBG.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.gameSection.bloodborne{
+    background: url(_example/bloodborneBG.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.gameSection .gameTitle{
+    text-transform: uppercase;
+    font-size: 400%;
+
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.gameSection .platforms{
+    position: absolute;
+
+    bottom: 1em; right: 1em;
+
+    text-align: rigth;
+}
+
+/* Customice slideshow styles */
+.slideshow_move_icon {
+    border-color: white;
+}
+.slideshow_dot_section{
+    border-color: white
+}
+.slideshow_dot_section:hover, .slideshow_dot_section.active{
+    background-color: white;
+}

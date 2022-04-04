@@ -72,7 +72,7 @@ html, body{
 
     cursor: pointer;
 
-    border: .11em solid black; border-radius: 50%;
+    border: .15em solid black; border-radius: 50%;
 }
 .slideshow_dot_section:hover, .slideshow_dot_section.active{
     background-color: black;
@@ -109,10 +109,20 @@ html, body{
     
     padding: .2em;
     width: .1em; height: .1em;
+
+    opacity: 0;
+    transition: opacity 1s ease-in;
 }
+#slideshow:hover .slideshow_move_icon {
+    opacity: 1;
+}
+
 .slideshow_move_block.disabled .slideshow_move_icon{
+    display: none;
+    /*
     border: solid silver;
     border-width: 0 .2em .2em 0;
+    */
 }
 .slideshow_move_block:hover .slideshow_move_icon{
     width: .2em; height: .2em;
