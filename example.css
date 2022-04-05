@@ -55,6 +55,19 @@
     text-align: rigth;
 }
 
+.header{
+    width: 100%;
+    text-align: center;
+}
+.logo{
+    height: 10%; width: 10%;
+    margin: 1em;
+}
+
+.customWrapper{
+    width: 100%;
+    height: 40em;
+}
 /* Customice slideshow styles */
 .slideshow_move_icon {
     border-color: white;
