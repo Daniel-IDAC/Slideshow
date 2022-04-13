@@ -1,74 +1,18 @@
-.gameSection{
-    color: white;
-    font-family: sans-serif;
-}
-
-.gameSection.halflife2{
-    background: url(_example/halflife2BG.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-.gameSection.tombraider{
-    background: url(_example/tombraiderBG.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-.gameSection.spiderman{
-    background: url(_example/spidermanBG.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-.gameSection.tlou{
-    background: url(_example/tlouBG.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-.gameSection.bloodborne{
-    background: url(_example/bloodborneBG.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.gameSection .gameTitle{
-    text-transform: uppercase;
-    font-size: 400%;
-
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-}
-
-.gameSection .platforms{
-    position: absolute;
-
-    bottom: 1em; right: 1em;
-
-    text-align: rigth;
-}
-
+/* Header */
 .header{
     width: 100%;
     text-align: center;
 }
 .logo{
-    height: 10%; width: 10%;
+    height: 8%; width: 8%;
     margin: 1em;
 }
-
-.customWrapper{
-    width: 100%;
-    height: 40em;
+/* Footer */
+.footer{
+    margin-top: 5em;
+    text-align: center;
 }
-/* Customice slideshow styles */
+/* Customice Slideshow styles */
 .slideshow_move_icon {
     border-color: white;
 }
@@ -77,4 +21,124 @@
 }
 .slideshow_dot_section:hover, .slideshow_dot_section.active{
     background-color: white;
+}
+/* Slideshow Example */
+.customWrapper{
+    width: 50%;
+    height: 40em;
+    margin: 0 auto;
+}
+.customSection{
+    color: white;
+    font-family: sans-serif;
+}
+.customSection .sectionTitle{
+    text-transform: uppercase;
+    font-size: 400%;
+
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.customSection.s1{
+    background: url(_example/p2.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.customSection.s2{
+    background: url(_example/p3.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.customSection.s3{
+    background: url(_example/p4.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.customSection.s4{
+    background: url(_example/p5.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.picture{
+    position: absolute;
+    z-index: -1;
+
+    top: 2em;
+    right: 15.5em;
+
+    width: 25em;
+    height: 35em;
+
+    background: url(_example/p0.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.picture:hover{
+    background: url(_example/p1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.textBlock{
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+
+    margin-left: 2em;
+    padding: 1em;
+
+    width: 45%;
+}
+/* CSS button by Greenlight */
+.button-64 {
+    position: absolute;
+    top: 20em;
+    right: 20em;
+
+    align-items: center;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.button-64:active,
+.button-64:hover {
+    outline: 0;
+}
+.button-64 span {
+    background-color: rgb(5, 6, 45);
+    padding: 16px 24px;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+}
+.button-64:hover span {
+    background: none;
 }

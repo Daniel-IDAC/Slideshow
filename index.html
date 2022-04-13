@@ -11,56 +11,43 @@
     <script src="functions.js"></script>
     <title>Slideshow</title>
 </head>
-<body onload="loadSlideshow('slideshow', true); loadSlideshow('customSlideshow', true);">
+<body onload="loadSlideshow('slideshow', true); loadSlideshow('customSlideshow', true); loadSlideshow('insideSlideshow', true);">
     <div class="header">
         <img class="logo" src="logo.png" title="Slideshow"></img>
     </div>
+    <h1>Slideshow Structure</h1>
+    <div id="slideshow" style="height: 50em;">
+        <div style="background-color: purple;"><h2>Section 1</h2></div>
+        <div style="background-color: blue;"><h2>Section 2</h2></div>
+        <div style="background-color: green;"><h2>Section 3</h2></div>
+        <div style="background-color: yellow;"><h2>Section 4</h2></div>
+        <div style="background-color: red;"><h2>Section 5</h2></div>
+    </div>
+    <h1>Slideshow Example</h1>
     <div class="customWrapper">
-        <div  id="customSlideshow">
-            <div class="gameSection halflife2">
-                <h1 class="gameTitle">Half-Life 2</h1>
-                <div class="platforms">
-                    <p>Platforms</p>
-                    <div class="platformIcons"></div>
-                </div>
+        <div id="customSlideshow">
+            <div class="customSection s1">
+                <h1 class="sectionTitle">Section 1</h1>
+                <p>Add the number of sections you need with any content inside.</p>
             </div>
-            <div class="gameSection tombraider">
-                <h1 class="gameTitle">Tomb Raider</h1>
-                <div class="platforms">
-                    <p>Platforms</p>
-                    <div class="platformIcons"></div>
+            <div class="customSection s2"></div>
+            <div class="customSection s3">
+                <h1 class="sectionTitle">Section with custome elements</h1>
+                <div class="textBlock">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultricies euismod placerat. Aliquam sit amet purus volutpat, lobortis ante vel, accumsan arcu. Sed placerat libero neque, sit amet accumsan ex gravida a. Nullam id varius sem. Aenean vehicula accumsan hendrerit. Nam semper ut lorem eget molestie. Praesent sed massa sed quam dictum finibus. Proin non justo scelerisque, imperdiet lectus ac, ultrices lacus. Suspendisse porttitor, ipsum id hendrerit varius, dui massa bibendum felis, tempus iaculis nulla tortor non enim. Etiam ultricies tortor eu elit scelerisque facilisis. Maecenas odio lectus, lobortis eu laoreet vitae, imperdiet in lacus. Mauris ligula nunc, gravida non semper ac, sagittis tempus mi. Quisque consectetur turpis arcu, ut varius nibh porta eget. Nunc lacinia neque felis, ac egestas risus fringilla id.</p>
+                    <p>Etiam porta mollis elementum. Donec dui arcu, dapibus in euismod quis, rhoncus eget odio. Mauris condimentum vestibulum diam a dapibus. Aliquam in eros sollicitudin, interdum enim malesuada, sollicitudin neque. Donec congue ut enim et varius. Duis vel ultricies augue. Quisque est odio, ultricies eget convallis et, iaculis a elit. Aliquam erat volutpat. Etiam nibh lectus, mattis ut leo eu, semper iaculis ex.</p>
                 </div>
+                <a class="button-64" role="button" href="https://getcssscan.com/css-buttons-examples" target="_blank"><span class="text">BUTTON</span></a>
             </div>
-            <div class="gameSection spiderman">
-                <h1 class="gameTitle">Spider-Man</h1>
-                <div class="platforms">
-                    <p>Platforms</p>
-                    <div class="platformIcons"></div>
-                </div>
-            </div>
-            <div class="gameSection tlou">
-                <h1 class="gameTitle">The Last of Us</h1>
-                <div class="platforms">
-                    <p>Platforms</p>
-                    <div class="platformIcons"></div>
-                </div>
-            </div>
-            <div class="gameSection bloodborne">
-                <h1 class="gameTitle">Bloodborne</h1>
-                <div class="platforms">
-                    <p>Platforms</p>
-                    <div class="platformIcons"></div>
-                </div>
+            <div class="customSection s4">
+                <h1 class="sectionTitle">Hover the picture</h1>
+                <p>Add any element with custom effects</p>
+                <div class="picture"></div>
             </div>
         </div>
     </div>
-    <h1>Basic Slideshow</h1>
-    <div id="slideshow" style="height: 50em;">
-        <div style="background-color: rgb(255, 0, 200);">Section 1</div>
-        <div style="background-color: rgb(0, 255, 21);">Section 2</div>
-        <div style="background-color: rgb(0, 81, 255);">Section 3</div>
-        <div style="background-color: rgb(255, 0, 179);">Section 4</div>
-        <div style="background-color: rgb(251, 255, 0);">Section 5</div>
+    <div class="footer">
+        <p>Developed by IDAC Productions</p>
     </div>
 </body>
 </html>
