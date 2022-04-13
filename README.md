@@ -1,4 +1,5 @@
 # Vanilla Slideshow
+![Slideshow Logo](https://github.com/Daniel-IDAC/Slideshow/blob/main/logo.png?raw=true)
 
 ## Usage
 ```html
